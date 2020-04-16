@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StoreEFDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_name" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Category_Unit">
+          <Key>
+            <PropertyRef Name="unit_id" />
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="unit_id" Type="int" Nullable="false" />
+          <Property Name="unit" Type="varchar" MaxLength="20" />
+          <Property Name="c_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="cust_id" />
+          </Key>
+          <Property Name="cust_id" Type="int" Nullable="false" />
+          <Property Name="cust_name" Type="varchar" MaxLength="50" />
+          <Property Name="cust_phone" Type="varchar" MaxLength="20" />
+          <Property Name="cust_fax" Type="varchar" MaxLength="20" />
+          <Property Name="cust_mobile" Type="varchar" MaxLength="20" />
+          <Property Name="cust_mail" Type="varchar" MaxLength="20" />
+          <Property Name="cust_website" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ExchangePermession">
+          <Key>
+            <PropertyRef Name="ep_id" />
+            <PropertyRef Name="s_id" />
+            <PropertyRef Name="c_id" />
+            <PropertyRef Name="cust_id" />
+          </Key>
+          <Property Name="ep_id" Type="int" Nullable="false" />
+          <Property Name="ep_date" Type="datetime" />
+          <Property Name="s_id" Type="int" Nullable="false" />
+          <Property Name="s_name" Type="varchar" MaxLength="20" />
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_quantity" Type="int" />
+          <Property Name="cust_id" Type="int" Nullable="false" />
+          <Property Name="cust_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="int" Nullable="false" />
+          <Property Name="s_name" Type="varchar" MaxLength="20" />
+          <Property Name="s_address" Type="varchar" MaxLength="50" />
+          <Property Name="s_manager" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Store_Category">
+          <Key>
+            <PropertyRef Name="s_id" />
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="s_id" Type="int" Nullable="false" />
+          <Property Name="c_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="supp_id" />
+          </Key>
+          <Property Name="supp_id" Type="int" Nullable="false" />
+          <Property Name="supp_name" Type="varchar" MaxLength="50" />
+          <Property Name="supp_phone" Type="varchar" MaxLength="20" />
+          <Property Name="supp_fax" Type="varchar" MaxLength="20" />
+          <Property Name="supp_mobile" Type="varchar" MaxLength="20" />
+          <Property Name="supp_mail" Type="varchar" MaxLength="20" />
+          <Property Name="supp_website" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SupplyPermission">
+          <Key>
+            <PropertyRef Name="sp_id" />
+            <PropertyRef Name="s_id" />
+            <PropertyRef Name="c_id" />
+            <PropertyRef Name="supp_id" />
+          </Key>
+          <Property Name="sp_id" Type="int" Nullable="false" />
+          <Property Name="sp_date" Type="datetime" />
+          <Property Name="s_id" Type="int" Nullable="false" />
+          <Property Name="s_name" Type="varchar" MaxLength="20" />
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_quantity" Type="int" />
+          <Property Name="supp_id" Type="int" Nullable="false" />
+          <Property Name="supp_name" Type="varchar" MaxLength="50" />
+          <Property Name="prod_date" Type="datetime" />
+          <Property Name="exp_date" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Category_U__c_id__2E1BDC42">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Category_Unit" Type="Self.Category_Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Category_Unit">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExchangeP__cust___3D5E1FD2">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="ExchangePermession" Type="Self.ExchangePermession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="ExchangePermession">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExchangePe__c_id__3C69FB99">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="ExchangePermession" Type="Self.ExchangePermession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="ExchangePermession">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExchangePe__s_id__3B75D760">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="ExchangePermession" Type="Self.ExchangePermession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="ExchangePermession">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Store_Cate__c_id__412EB0B6">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Store_Category" Type="Self.Store_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Store_Category">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Store_Cate__s_id__403A8C7D">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="Store_Category" Type="Self.Store_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="Store_Category">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplyPer__supp___38996AB5">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="SupplyPermission" Type="Self.SupplyPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="supp_id" />
+            </Principal>
+            <Dependent Role="SupplyPermission">
+              <PropertyRef Name="supp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplyPerm__c_id__37A5467C">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="SupplyPermission" Type="Self.SupplyPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="SupplyPermission">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplyPerm__s_id__36B12243">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="SupplyPermission" Type="Self.SupplyPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="SupplyPermission">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StoreEFDBModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category_Unit" EntityType="Self.Category_Unit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExchangePermession" EntityType="Self.ExchangePermession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Store_Category" EntityType="Self.Store_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplyPermission" EntityType="Self.SupplyPermission" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Category_U__c_id__2E1BDC42" Association="Self.FK__Category_U__c_id__2E1BDC42">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Category_Unit" EntitySet="Category_Unit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExchangeP__cust___3D5E1FD2" Association="Self.FK__ExchangeP__cust___3D5E1FD2">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="ExchangePermession" EntitySet="ExchangePermession" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExchangePe__c_id__3C69FB99" Association="Self.FK__ExchangePe__c_id__3C69FB99">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="ExchangePermession" EntitySet="ExchangePermession" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExchangePe__s_id__3B75D760" Association="Self.FK__ExchangePe__s_id__3B75D760">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="ExchangePermession" EntitySet="ExchangePermession" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Store_Cate__c_id__412EB0B6" Association="Self.FK__Store_Cate__c_id__412EB0B6">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Store_Category" EntitySet="Store_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Store_Cate__s_id__403A8C7D" Association="Self.FK__Store_Cate__s_id__403A8C7D">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Store_Category" EntitySet="Store_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplyPer__supp___38996AB5" Association="Self.FK__SupplyPer__supp___38996AB5">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplyPermission" EntitySet="SupplyPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplyPerm__c_id__37A5467C" Association="Self.FK__SupplyPerm__c_id__37A5467C">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SupplyPermission" EntitySet="SupplyPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplyPerm__s_id__36B12243" Association="Self.FK__SupplyPerm__s_id__36B12243">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="SupplyPermission" EntitySet="SupplyPermission" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StoreEFDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category_Unit" Relationship="Self.FK__Category_U__c_id__2E1BDC42" FromRole="Category" ToRole="Category_Unit" />
+          <NavigationProperty Name="ExchangePermessions" Relationship="Self.FK__ExchangePe__c_id__3C69FB99" FromRole="Category" ToRole="ExchangePermession" />
+          <NavigationProperty Name="SupplyPermissions" Relationship="Self.FK__SupplyPerm__c_id__37A5467C" FromRole="Category" ToRole="SupplyPermission" />
+          <NavigationProperty Name="Stores" Relationship="Self.Store_Category" FromRole="Category" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="Category_Unit">
+          <Key>
+            <PropertyRef Name="unit_id" />
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="unit_id" Type="Int32" Nullable="false" />
+          <Property Name="unit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Category_U__c_id__2E1BDC42" FromRole="Category_Unit" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="cust_id" />
+          </Key>
+          <Property Name="cust_id" Type="Int32" Nullable="false" />
+          <Property Name="cust_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cust_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cust_fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cust_mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cust_mail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cust_website" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ExchangePermessions" Relationship="Self.FK__ExchangeP__cust___3D5E1FD2" FromRole="Customer" ToRole="ExchangePermession" />
+        </EntityType>
+        <EntityType Name="ExchangePermession">
+          <Key>
+            <PropertyRef Name="ep_id" />
+            <PropertyRef Name="s_id" />
+            <PropertyRef Name="c_id" />
+            <PropertyRef Name="cust_id" />
+          </Key>
+          <Property Name="ep_id" Type="Int32" Nullable="false" />
+          <Property Name="ep_date" Type="DateTime" Precision="3" />
+          <Property Name="s_id" Type="Int32" Nullable="false" />
+          <Property Name="s_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_quantity" Type="Int32" />
+          <Property Name="cust_id" Type="Int32" Nullable="false" />
+          <Property Name="cust_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__ExchangePe__c_id__3C69FB99" FromRole="ExchangePermession" ToRole="Category" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__ExchangeP__cust___3D5E1FD2" FromRole="ExchangePermession" ToRole="Customer" />
+          <NavigationProperty Name="Store" Relationship="Self.FK__ExchangePe__s_id__3B75D760" FromRole="ExchangePermession" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="Int32" Nullable="false" />
+          <Property Name="s_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="s_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="s_manager" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ExchangePermessions" Relationship="Self.FK__ExchangePe__s_id__3B75D760" FromRole="Store" ToRole="ExchangePermession" />
+          <NavigationProperty Name="SupplyPermissions" Relationship="Self.FK__SupplyPerm__s_id__36B12243" FromRole="Store" ToRole="SupplyPermission" />
+          <NavigationProperty Name="Categories" Relationship="Self.Store_Category" FromRole="Store" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="supp_id" />
+          </Key>
+          <Property Name="supp_id" Type="Int32" Nullable="false" />
+          <Property Name="supp_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supp_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="supp_fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="supp_mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="supp_mail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="supp_website" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SupplyPermissions" Relationship="Self.FK__SupplyPer__supp___38996AB5" FromRole="Supplier" ToRole="SupplyPermission" />
+        </EntityType>
+        <EntityType Name="SupplyPermission">
+          <Key>
+            <PropertyRef Name="sp_id" />
+            <PropertyRef Name="s_id" />
+            <PropertyRef Name="c_id" />
+            <PropertyRef Name="supp_id" />
+          </Key>
+          <Property Name="sp_id" Type="Int32" Nullable="false" />
+          <Property Name="sp_date" Type="DateTime" Precision="3" />
+          <Property Name="s_id" Type="Int32" Nullable="false" />
+          <Property Name="s_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_quantity" Type="Int32" />
+          <Property Name="supp_id" Type="Int32" Nullable="false" />
+          <Property Name="supp_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prod_date" Type="DateTime" Precision="3" />
+          <Property Name="exp_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__SupplyPerm__c_id__37A5467C" FromRole="SupplyPermission" ToRole="Category" />
+          <NavigationProperty Name="Store" Relationship="Self.FK__SupplyPerm__s_id__36B12243" FromRole="SupplyPermission" ToRole="Store" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplyPer__supp___38996AB5" FromRole="SupplyPermission" ToRole="Supplier" />
+        </EntityType>
+        <Association Name="FK__Category_U__c_id__2E1BDC42">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Category_Unit" Type="Self.Category_Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Category_Unit">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExchangePe__c_id__3C69FB99">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="ExchangePermession" Type="Self.ExchangePermession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="ExchangePermession">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplyPerm__c_id__37A5467C">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="SupplyPermission" Type="Self.SupplyPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="SupplyPermission">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExchangeP__cust___3D5E1FD2">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="ExchangePermession" Type="Self.ExchangePermession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="ExchangePermession">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExchangePe__s_id__3B75D760">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="ExchangePermession" Type="Self.ExchangePermession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="ExchangePermession">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplyPerm__s_id__36B12243">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="SupplyPermission" Type="Self.SupplyPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="SupplyPermission">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplyPer__supp___38996AB5">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="SupplyPermission" Type="Self.SupplyPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="supp_id" />
+            </Principal>
+            <Dependent Role="SupplyPermission">
+              <PropertyRef Name="supp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Store_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <End Role="Store" Type="Self.Store" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="StoreEFDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Category_Unit" EntityType="Self.Category_Unit" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="ExchangePermessions" EntityType="Self.ExchangePermession" />
+          <EntitySet Name="Stores" EntityType="Self.Store" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="SupplyPermissions" EntityType="Self.SupplyPermission" />
+          <AssociationSet Name="FK__Category_U__c_id__2E1BDC42" Association="Self.FK__Category_U__c_id__2E1BDC42">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Category_Unit" EntitySet="Category_Unit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExchangePe__c_id__3C69FB99" Association="Self.FK__ExchangePe__c_id__3C69FB99">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="ExchangePermession" EntitySet="ExchangePermessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplyPerm__c_id__37A5467C" Association="Self.FK__SupplyPerm__c_id__37A5467C">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="SupplyPermission" EntitySet="SupplyPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExchangeP__cust___3D5E1FD2" Association="Self.FK__ExchangeP__cust___3D5E1FD2">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="ExchangePermession" EntitySet="ExchangePermessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExchangePe__s_id__3B75D760" Association="Self.FK__ExchangePe__s_id__3B75D760">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="ExchangePermession" EntitySet="ExchangePermessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplyPerm__s_id__36B12243" Association="Self.FK__SupplyPerm__s_id__36B12243">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="SupplyPermission" EntitySet="SupplyPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplyPer__supp___38996AB5" Association="Self.FK__SupplyPer__supp___38996AB5">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplyPermission" EntitySet="SupplyPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="Store_Category" Association="Self.Store_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Store" EntitySet="Stores" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StoreEFDBModelStoreContainer" CdmEntityContainer="StoreEFDBEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="StoreEFDBModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category_Unit">
+            <EntityTypeMapping TypeName="StoreEFDBModel.Category_Unit">
+              <MappingFragment StoreEntitySet="Category_Unit">
+                <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="StoreEFDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="cust_name" ColumnName="cust_name" />
+                <ScalarProperty Name="cust_phone" ColumnName="cust_phone" />
+                <ScalarProperty Name="cust_fax" ColumnName="cust_fax" />
+                <ScalarProperty Name="cust_mobile" ColumnName="cust_mobile" />
+                <ScalarProperty Name="cust_mail" ColumnName="cust_mail" />
+                <ScalarProperty Name="cust_website" ColumnName="cust_website" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExchangePermessions">
+            <EntityTypeMapping TypeName="StoreEFDBModel.ExchangePermession">
+              <MappingFragment StoreEntitySet="ExchangePermession">
+                <ScalarProperty Name="ep_id" ColumnName="ep_id" />
+                <ScalarProperty Name="ep_date" ColumnName="ep_date" />
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_quantity" ColumnName="c_quantity" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="cust_name" ColumnName="cust_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="StoreEFDBModel.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="s_address" ColumnName="s_address" />
+                <ScalarProperty Name="s_manager" ColumnName="s_manager" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="StoreEFDBModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="supp_id" ColumnName="supp_id" />
+                <ScalarProperty Name="supp_name" ColumnName="supp_name" />
+                <ScalarProperty Name="supp_phone" ColumnName="supp_phone" />
+                <ScalarProperty Name="supp_fax" ColumnName="supp_fax" />
+                <ScalarProperty Name="supp_mobile" ColumnName="supp_mobile" />
+                <ScalarProperty Name="supp_mail" ColumnName="supp_mail" />
+                <ScalarProperty Name="supp_website" ColumnName="supp_website" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplyPermissions">
+            <EntityTypeMapping TypeName="StoreEFDBModel.SupplyPermission">
+              <MappingFragment StoreEntitySet="SupplyPermission">
+                <ScalarProperty Name="sp_id" ColumnName="sp_id" />
+                <ScalarProperty Name="sp_date" ColumnName="sp_date" />
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_quantity" ColumnName="c_quantity" />
+                <ScalarProperty Name="supp_id" ColumnName="supp_id" />
+                <ScalarProperty Name="supp_name" ColumnName="supp_name" />
+                <ScalarProperty Name="prod_date" ColumnName="prod_date" />
+                <ScalarProperty Name="exp_date" ColumnName="exp_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Store_Category" TypeName="StoreEFDBModel.Store_Category" StoreEntitySet="Store_Category">
+            <EndProperty Name="Category">
+              <ScalarProperty Name="c_id" ColumnName="c_id" />
+            </EndProperty>
+            <EndProperty Name="Store">
+              <ScalarProperty Name="s_id" ColumnName="s_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
