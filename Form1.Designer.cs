@@ -137,6 +137,44 @@
             this.custmobileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.custmailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.custwebsiteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.permissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supplyPermissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exchangePermissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SupplyPermissiongroupBox = new System.Windows.Forms.GroupBox();
+            this.SupplyPermissionDGV = new System.Windows.Forms.DataGridView();
+            this.label23 = new System.Windows.Forms.Label();
+            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.supplyPermissionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.supplyPermissionTableAdapter = new Store_Manager.StoreEFDBDataSetTableAdapters.SupplyPermissionTableAdapter();
+            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.textBox29 = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.textBox31 = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.spidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.spdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.snameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cquantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suppnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storeGroupBox.SuspendLayout();
             this.CategoryGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UnitCategoryDGV)).BeginInit();
@@ -156,6 +194,9 @@
             this.CustomerGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).BeginInit();
+            this.SupplyPermissiongroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SupplyPermissionDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplyPermissionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -203,15 +244,16 @@
             this.storeGroupBox.Controls.Add(this.textBox4);
             this.storeGroupBox.Controls.Add(this.textBox2);
             this.storeGroupBox.Controls.Add(this.textBox3);
-            this.storeGroupBox.Location = new System.Drawing.Point(29, 33);
+            this.storeGroupBox.Location = new System.Drawing.Point(26, 39);
             this.storeGroupBox.Name = "storeGroupBox";
-            this.storeGroupBox.Size = new System.Drawing.Size(706, 289);
+            this.storeGroupBox.Size = new System.Drawing.Size(740, 341);
             this.storeGroupBox.TabIndex = 4;
             this.storeGroupBox.TabStop = false;
             this.storeGroupBox.Text = "Store";
             // 
             // CategoryGroupBox
             // 
+            this.CategoryGroupBox.Controls.Add(this.SupplierGroupBox);
             this.CategoryGroupBox.Controls.Add(this.button6);
             this.CategoryGroupBox.Controls.Add(this.label8);
             this.CategoryGroupBox.Controls.Add(this.textBox8);
@@ -225,9 +267,9 @@
             this.CategoryGroupBox.Controls.Add(this.label5);
             this.CategoryGroupBox.Controls.Add(this.textBox6);
             this.CategoryGroupBox.Controls.Add(this.textBox5);
-            this.CategoryGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.CategoryGroupBox.Location = new System.Drawing.Point(-1, 1);
             this.CategoryGroupBox.Name = "CategoryGroupBox";
-            this.CategoryGroupBox.Size = new System.Drawing.Size(706, 289);
+            this.CategoryGroupBox.Size = new System.Drawing.Size(706, 292);
             this.CategoryGroupBox.TabIndex = 7;
             this.CategoryGroupBox.TabStop = false;
             this.CategoryGroupBox.Text = "Category";
@@ -510,10 +552,11 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemsToolStripMenuItem});
+            this.itemsToolStripMenuItem,
+            this.permissionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(771, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(790, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -615,7 +658,7 @@
             this.SupplierGroupBox.Controls.Add(this.SupplierDGV);
             this.SupplierGroupBox.Controls.Add(this.label9);
             this.SupplierGroupBox.Controls.Add(this.textBox9);
-            this.SupplierGroupBox.Location = new System.Drawing.Point(29, 33);
+            this.SupplierGroupBox.Location = new System.Drawing.Point(0, 0);
             this.SupplierGroupBox.Name = "SupplierGroupBox";
             this.SupplierGroupBox.Size = new System.Drawing.Size(706, 289);
             this.SupplierGroupBox.TabIndex = 13;
@@ -790,6 +833,7 @@
             this.button9.TabIndex = 17;
             this.button9.Text = "Cancel";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // suppidDataGridViewTextBoxColumn
             // 
@@ -1080,15 +1124,346 @@
             this.custwebsiteDataGridViewTextBoxColumn.Name = "custwebsiteDataGridViewTextBoxColumn";
             this.custwebsiteDataGridViewTextBoxColumn.Width = 70;
             // 
+            // permissionsToolStripMenuItem
+            // 
+            this.permissionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.supplyPermissionToolStripMenuItem,
+            this.exchangePermissionToolStripMenuItem});
+            this.permissionsToolStripMenuItem.Name = "permissionsToolStripMenuItem";
+            this.permissionsToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.permissionsToolStripMenuItem.Text = "Permissions";
+            // 
+            // supplyPermissionToolStripMenuItem
+            // 
+            this.supplyPermissionToolStripMenuItem.Name = "supplyPermissionToolStripMenuItem";
+            this.supplyPermissionToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.supplyPermissionToolStripMenuItem.Text = "Supply Permission";
+            this.supplyPermissionToolStripMenuItem.Click += new System.EventHandler(this.supplyPermissionToolStripMenuItem_Click);
+            // 
+            // exchangePermissionToolStripMenuItem
+            // 
+            this.exchangePermissionToolStripMenuItem.Name = "exchangePermissionToolStripMenuItem";
+            this.exchangePermissionToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.exchangePermissionToolStripMenuItem.Text = "Exchange Permission";
+            // 
+            // SupplyPermissiongroupBox
+            // 
+            this.SupplyPermissiongroupBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.SupplyPermissiongroupBox.Controls.Add(this.textBox32);
+            this.SupplyPermissiongroupBox.Controls.Add(this.label32);
+            this.SupplyPermissiongroupBox.Controls.Add(this.textBox31);
+            this.SupplyPermissiongroupBox.Controls.Add(this.label31);
+            this.SupplyPermissiongroupBox.Controls.Add(this.textBox30);
+            this.SupplyPermissiongroupBox.Controls.Add(this.label30);
+            this.SupplyPermissiongroupBox.Controls.Add(this.button15);
+            this.SupplyPermissiongroupBox.Controls.Add(this.textBox29);
+            this.SupplyPermissiongroupBox.Controls.Add(this.label29);
+            this.SupplyPermissiongroupBox.Controls.Add(this.button14);
+            this.SupplyPermissiongroupBox.Controls.Add(this.button13);
+            this.SupplyPermissiongroupBox.Controls.Add(this.textBox28);
+            this.SupplyPermissiongroupBox.Controls.Add(this.label28);
+            this.SupplyPermissiongroupBox.Controls.Add(this.textBox27);
+            this.SupplyPermissiongroupBox.Controls.Add(this.label27);
+            this.SupplyPermissiongroupBox.Controls.Add(this.textBox26);
+            this.SupplyPermissiongroupBox.Controls.Add(this.label26);
+            this.SupplyPermissiongroupBox.Controls.Add(this.textBox25);
+            this.SupplyPermissiongroupBox.Controls.Add(this.label25);
+            this.SupplyPermissiongroupBox.Controls.Add(this.textBox24);
+            this.SupplyPermissiongroupBox.Controls.Add(this.label24);
+            this.SupplyPermissiongroupBox.Controls.Add(this.textBox23);
+            this.SupplyPermissiongroupBox.Controls.Add(this.label23);
+            this.SupplyPermissiongroupBox.Controls.Add(this.SupplyPermissionDGV);
+            this.SupplyPermissiongroupBox.Location = new System.Drawing.Point(25, 34);
+            this.SupplyPermissiongroupBox.Name = "SupplyPermissiongroupBox";
+            this.SupplyPermissiongroupBox.Size = new System.Drawing.Size(741, 400);
+            this.SupplyPermissiongroupBox.TabIndex = 36;
+            this.SupplyPermissiongroupBox.TabStop = false;
+            this.SupplyPermissiongroupBox.Text = "Supply Permission";
+            // 
+            // SupplyPermissionDGV
+            // 
+            this.SupplyPermissionDGV.AutoGenerateColumns = false;
+            this.SupplyPermissionDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SupplyPermissionDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.spidDataGridViewTextBoxColumn,
+            this.spdateDataGridViewTextBoxColumn,
+            this.snameDataGridViewTextBoxColumn1,
+            this.cquantityDataGridViewTextBoxColumn,
+            this.suppnameDataGridViewTextBoxColumn1,
+            this.proddateDataGridViewTextBoxColumn,
+            this.expdateDataGridViewTextBoxColumn});
+            this.SupplyPermissionDGV.DataSource = this.supplyPermissionBindingSource;
+            this.SupplyPermissionDGV.Location = new System.Drawing.Point(284, 19);
+            this.SupplyPermissionDGV.Name = "SupplyPermissionDGV";
+            this.SupplyPermissionDGV.Size = new System.Drawing.Size(450, 359);
+            this.SupplyPermissionDGV.TabIndex = 0;
+            this.SupplyPermissionDGV.DoubleClick += new System.EventHandler(this.SupplyPermissionDGV_DoubleClick);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(46, 26);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(18, 13);
+            this.label23.TabIndex = 1;
+            this.label23.Text = "ID";
+            // 
+            // textBox23
+            // 
+            this.textBox23.Location = new System.Drawing.Point(135, 22);
+            this.textBox23.Name = "textBox23";
+            this.textBox23.Size = new System.Drawing.Size(133, 20);
+            this.textBox23.TabIndex = 2;
+            // 
+            // supplyPermissionBindingSource
+            // 
+            this.supplyPermissionBindingSource.DataMember = "SupplyPermission";
+            this.supplyPermissionBindingSource.DataSource = this.storeEFDBDataSet;
+            // 
+            // supplyPermissionTableAdapter
+            // 
+            this.supplyPermissionTableAdapter.ClearBeforeFill = true;
+            // 
+            // textBox24
+            // 
+            this.textBox24.Location = new System.Drawing.Point(135, 47);
+            this.textBox24.Name = "textBox24";
+            this.textBox24.Size = new System.Drawing.Size(133, 20);
+            this.textBox24.TabIndex = 4;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(46, 51);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(30, 13);
+            this.label24.TabIndex = 3;
+            this.label24.Text = "Date";
+            // 
+            // textBox25
+            // 
+            this.textBox25.Location = new System.Drawing.Point(135, 101);
+            this.textBox25.Name = "textBox25";
+            this.textBox25.Size = new System.Drawing.Size(133, 20);
+            this.textBox25.TabIndex = 6;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(46, 108);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(63, 13);
+            this.label25.TabIndex = 5;
+            this.label25.Text = "Store Name";
+            // 
+            // textBox26
+            // 
+            this.textBox26.Location = new System.Drawing.Point(135, 152);
+            this.textBox26.Name = "textBox26";
+            this.textBox26.Size = new System.Drawing.Size(133, 20);
+            this.textBox26.TabIndex = 8;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(46, 156);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(91, 13);
+            this.label26.TabIndex = 7;
+            this.label26.Text = "Category Quantity";
+            // 
+            // textBox27
+            // 
+            this.textBox27.Location = new System.Drawing.Point(135, 206);
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new System.Drawing.Size(133, 20);
+            this.textBox27.TabIndex = 10;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(46, 210);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(76, 13);
+            this.label27.TabIndex = 9;
+            this.label27.Text = "Supplier Name";
+            // 
+            // textBox28
+            // 
+            this.textBox28.Location = new System.Drawing.Point(135, 232);
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new System.Drawing.Size(133, 20);
+            this.textBox28.TabIndex = 12;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(46, 236);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(84, 13);
+            this.label28.TabIndex = 11;
+            this.label28.Text = "Production Date";
+            // 
+            // textBox29
+            // 
+            this.textBox29.Location = new System.Drawing.Point(135, 258);
+            this.textBox29.Name = "textBox29";
+            this.textBox29.Size = new System.Drawing.Size(133, 20);
+            this.textBox29.TabIndex = 14;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(46, 262);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(79, 13);
+            this.label29.TabIndex = 13;
+            this.label29.Text = "Expiration Date";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(122, 273);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(182, 20);
+            this.dateTimePicker1.TabIndex = 15;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(190, 327);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 23);
+            this.button13.TabIndex = 16;
+            this.button13.Text = "Insert";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(190, 352);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(75, 26);
+            this.button14.TabIndex = 17;
+            this.button14.Text = "Update";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(62, 344);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(75, 23);
+            this.button15.TabIndex = 18;
+            this.button15.Text = "Clear";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // textBox30
+            // 
+            this.textBox30.Location = new System.Drawing.Point(135, 77);
+            this.textBox30.Name = "textBox30";
+            this.textBox30.Size = new System.Drawing.Size(133, 20);
+            this.textBox30.TabIndex = 20;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(46, 81);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(46, 13);
+            this.label30.TabIndex = 19;
+            this.label30.Text = "Store ID";
+            // 
+            // textBox31
+            // 
+            this.textBox31.Location = new System.Drawing.Point(133, 128);
+            this.textBox31.Name = "textBox31";
+            this.textBox31.Size = new System.Drawing.Size(133, 20);
+            this.textBox31.TabIndex = 22;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(46, 131);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(63, 13);
+            this.label31.TabIndex = 21;
+            this.label31.Text = "Category ID";
+            // 
+            // textBox32
+            // 
+            this.textBox32.Location = new System.Drawing.Point(135, 178);
+            this.textBox32.Name = "textBox32";
+            this.textBox32.Size = new System.Drawing.Size(133, 20);
+            this.textBox32.TabIndex = 24;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(46, 182);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(59, 13);
+            this.label32.TabIndex = 23;
+            this.label32.Text = "Supplier ID";
+            // 
+            // spidDataGridViewTextBoxColumn
+            // 
+            this.spidDataGridViewTextBoxColumn.DataPropertyName = "sp_id";
+            this.spidDataGridViewTextBoxColumn.HeaderText = "sp_id";
+            this.spidDataGridViewTextBoxColumn.Name = "spidDataGridViewTextBoxColumn";
+            this.spidDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // spdateDataGridViewTextBoxColumn
+            // 
+            this.spdateDataGridViewTextBoxColumn.DataPropertyName = "sp_date";
+            this.spdateDataGridViewTextBoxColumn.HeaderText = "sp_date";
+            this.spdateDataGridViewTextBoxColumn.Name = "spdateDataGridViewTextBoxColumn";
+            this.spdateDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // snameDataGridViewTextBoxColumn1
+            // 
+            this.snameDataGridViewTextBoxColumn1.DataPropertyName = "s_name";
+            this.snameDataGridViewTextBoxColumn1.HeaderText = "s_name";
+            this.snameDataGridViewTextBoxColumn1.Name = "snameDataGridViewTextBoxColumn1";
+            this.snameDataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // cquantityDataGridViewTextBoxColumn
+            // 
+            this.cquantityDataGridViewTextBoxColumn.DataPropertyName = "c_quantity";
+            this.cquantityDataGridViewTextBoxColumn.HeaderText = "c_quantity";
+            this.cquantityDataGridViewTextBoxColumn.Name = "cquantityDataGridViewTextBoxColumn";
+            this.cquantityDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // suppnameDataGridViewTextBoxColumn1
+            // 
+            this.suppnameDataGridViewTextBoxColumn1.DataPropertyName = "supp_name";
+            this.suppnameDataGridViewTextBoxColumn1.HeaderText = "supp_name";
+            this.suppnameDataGridViewTextBoxColumn1.Name = "suppnameDataGridViewTextBoxColumn1";
+            this.suppnameDataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // proddateDataGridViewTextBoxColumn
+            // 
+            this.proddateDataGridViewTextBoxColumn.DataPropertyName = "prod_date";
+            this.proddateDataGridViewTextBoxColumn.HeaderText = "prod_date";
+            this.proddateDataGridViewTextBoxColumn.Name = "proddateDataGridViewTextBoxColumn";
+            this.proddateDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // expdateDataGridViewTextBoxColumn
+            // 
+            this.expdateDataGridViewTextBoxColumn.DataPropertyName = "exp_date";
+            this.expdateDataGridViewTextBoxColumn.HeaderText = "exp_date";
+            this.expdateDataGridViewTextBoxColumn.Name = "expdateDataGridViewTextBoxColumn";
+            this.expdateDataGridViewTextBoxColumn.Width = 80;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(771, 358);
-            this.Controls.Add(this.SupplierGroupBox);
+            this.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.ClientSize = new System.Drawing.Size(790, 446);
+            this.Controls.Add(this.SupplyPermissiongroupBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.storeGroupBox);
+            this.Controls.Add(this.dateTimePicker1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Store Manager";
@@ -1117,6 +1492,10 @@
             this.CustomerGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).EndInit();
+            this.SupplyPermissiongroupBox.ResumeLayout(false);
+            this.SupplyPermissiongroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SupplyPermissionDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplyPermissionBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1232,6 +1611,44 @@
         private System.Windows.Forms.BindingSource customerBindingSource1;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.ToolStripMenuItem permissionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem supplyPermissionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exchangePermissionToolStripMenuItem;
+        private System.Windows.Forms.GroupBox SupplyPermissiongroupBox;
+        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.DataGridView SupplyPermissionDGV;
+        private System.Windows.Forms.BindingSource supplyPermissionBindingSource;
+        private StoreEFDBDataSetTableAdapters.SupplyPermissionTableAdapter supplyPermissionTableAdapter;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox textBox29;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBox28;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox textBox27;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox textBox26;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textBox25;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox textBox32;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox textBox31;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox textBox30;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn spidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn spdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn snameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cquantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suppnameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn proddateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expdateDataGridViewTextBoxColumn;
     }
 }
 

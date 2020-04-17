@@ -18,6 +18,7 @@ namespace Store_Manager
         Category_Unit categoryunit = new Category_Unit();
         Supplier supplier = new Supplier();
         Customer customer = new Customer();
+        SupplyPermission supplypermission = new SupplyPermission();
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +27,8 @@ namespace Store_Manager
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'storeEFDBDataSet.SupplyPermission' table. You can move, or remove it, as needed.
+            this.supplyPermissionTableAdapter.Fill(this.storeEFDBDataSet.SupplyPermission);
             // TODO: This line of code loads data into the 'storeEFDBDataSet.Supplier' table. You can move, or remove it, as needed.
             this.supplierTableAdapter.Fill(this.storeEFDBDataSet.Supplier);
             // TODO: This line of code loads data into the 'storeEFDBDataSet.Category_Unit' table. You can move, or remove it, as needed.
@@ -45,6 +48,8 @@ namespace Store_Manager
             SupplierGridViewer();
             CustomerGroupBox.Visible = false;
             CustomerGridViewer();
+            SupplyPermissiongroupBox.Visible = false;
+            SupplyPermissionGridViewer();
 
         }
 
@@ -65,6 +70,8 @@ namespace Store_Manager
             textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = "";
             textBox5.Text = textBox6.Text =textBox7.Text = textBox8.Text = "";
             textBox9.Text = textBox10.Text = textBox11.Text = textBox12.Text = textBox13.Text = textBox14.Text = textBox15.Text = "";
+            textBox16.Text = textBox17.Text = textBox18.Text = textBox19.Text = textBox20.Text = textBox21.Text = textBox22.Text = "";
+            textBox23.Text = textBox24.Text = textBox25.Text = textBox26.Text = textBox27.Text = textBox28.Text = textBox29.Text = textBox30.Text = textBox31.Text = textBox32.Text = "";
         }
         
         void StoresDataGridView()
@@ -193,7 +200,7 @@ namespace Store_Manager
                 textBox6.Text = category.c_name;
                 //if(categoryunit.unit_id !=)
                 //{
-                    textBox8.Text = Convert.ToString(categoryunit.unit_id);
+                 textBox8.Text = Convert.ToString(categoryunit.unit_id);
                 //}
                 //else
                 //{
@@ -321,6 +328,10 @@ namespace Store_Manager
             SupplierGridViewer();
             MessageBox.Show("Supplier updated successfully!");
         }
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
 
         ////////////////////////////////// CUSTOMERRRR /////////////////////////
 
@@ -397,6 +408,95 @@ namespace Store_Manager
         }
 
         private void button10_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        ////////////////////////////// PERMISSIONS ////////////////////////////////////////////
+
+        private void supplyPermissionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SupplyPermissiongroupBox.Visible = true;
+        }
+        void SupplyPermissionGridViewer()
+        {
+            SupplyPermissionDGV.AutoGenerateColumns = false;
+            using (StoreEFDBEntities db = new StoreEFDBEntities())
+            {
+                SupplyPermissionDGV.DataSource = db.SupplyPermissions.ToList<SupplyPermission>();
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e) //insert supply permission
+        {
+            supplypermission.sp_id = Convert.ToInt32(textBox23.Text);
+            supplypermission.sp_date = Convert.ToDateTime(textBox24.Text);
+            supplypermission.s_name = textBox25.Text;
+            supplypermission.c_quantity = Convert.ToInt32(textBox26.Text);
+            supplypermission.supp_name = textBox27.Text;
+            supplypermission.prod_date = Convert.ToDateTime(textBox28.Text);
+            supplypermission.exp_date = Convert.ToDateTime(textBox29.Text);
+            supplypermission.s_id = Convert.ToInt32(textBox30.Text);
+            supplypermission.c_id = Convert.ToInt32(textBox31.Text);
+            supplypermission.supp_id = Convert.ToInt32(textBox32.Text);
+
+            using (StoreEFDBEntities db = new StoreEFDBEntities())
+            {
+                db.SupplyPermissions.Add(supplypermission);
+                db.SaveChanges();
+            }
+            Clear();
+            SupplyPermissionGridViewer();
+            MessageBox.Show("Supply permission added successfully!");
+        }
+
+        private void SupplyPermissionDGV_DoubleClick(object sender, EventArgs e)
+        {
+            supplypermission.sp_id = Convert.ToInt32(SupplyPermissionDGV.CurrentRow.Cells[0].Value);
+            //supplypermission.c_id = Convert.ToInt32(SupplyPermissionDGV.CurrentRow.Cells[4].Value);
+            //supplypermission.s_id = Convert.ToInt32(SupplyPermissionDGV.CurrentRow.Cells[0].Value);
+            using (StoreEFDBEntities db = new StoreEFDBEntities())
+            {
+                supplypermission = db.SupplyPermissions.Where(x => x.sp_id == supplypermission.sp_id).FirstOrDefault();
+                textBox23.Text = supplypermission.sp_id.ToString();
+                textBox24.Text = supplypermission.sp_date.ToString();
+                textBox30.Text = supplypermission.s_id.ToString();
+                textBox25.Text = supplypermission.s_name;
+                textBox31.Text = supplypermission.c_id.ToString();
+                textBox26.Text = supplypermission.c_quantity.ToString();
+                textBox32.Text = supplypermission.supp_id.ToString();
+                textBox27.Text = supplypermission.supp_name;
+                textBox28.Text = supplypermission.prod_date.ToString();
+                textBox29.Text = supplypermission.exp_date.ToString();
+                db.SaveChanges();
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e) //update btn
+        {
+            supplypermission.sp_id = Convert.ToInt32(textBox23.Text);
+            supplypermission.sp_date = Convert.ToDateTime(textBox24.Text);
+            supplypermission.s_name = textBox25.Text;
+            supplypermission.c_quantity = Convert.ToInt32(textBox26.Text);
+            supplypermission.supp_name = textBox27.Text;
+            supplypermission.prod_date = Convert.ToDateTime(textBox28.Text);
+            supplypermission.exp_date = Convert.ToDateTime(textBox29.Text);
+            supplypermission.s_id = Convert.ToInt32(textBox30.Text);
+            supplypermission.c_id = Convert.ToInt32(textBox31.Text);
+            supplypermission.supp_id = Convert.ToInt32(textBox32.Text);
+
+            using (StoreEFDBEntities db = new StoreEFDBEntities())
+            {
+                db.Entry(supplypermission).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            Clear();
+            SupplyPermissionGridViewer();
+            MessageBox.Show("Supply permission updated successfully!");
+        }
+
+        private void button15_Click(object sender, EventArgs e)
         {
             Clear();
         }
